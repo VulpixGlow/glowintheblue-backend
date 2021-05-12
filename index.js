@@ -1,6 +1,7 @@
-const { db } = require('./db')
+require("dotenv").config()
+const { db } = require("./db")
 const PORT = process.env.PORT || 8080
-const app = require('./app')
+const app = require("./app")
 
 const init = async () => {
   try {

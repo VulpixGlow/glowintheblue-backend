@@ -28,7 +28,7 @@ const DB_INSTANCE = process.env.DB_INSTANCE
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   host: `/cloudsql/${process.env.DB_INSTANCE}`,
-  dialect: "mysql",
+  dialect: "postgres",
   dialectOptions: {
     socketPath: `/cloudsql/${DB_INSTANCE}`
   },
