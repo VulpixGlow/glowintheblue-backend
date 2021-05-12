@@ -104,7 +104,6 @@ dist
 .tern-port
 
 # Google Cloud Env
-app.yaml
 .gcloudignore
 
 # testing
