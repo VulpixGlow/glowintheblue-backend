@@ -22,7 +22,7 @@ const DB_USER = process.env.DB_USER
 const DB_PASS = process.env.DB_PASS
 const DB_INSTANCE = process.env.DB_INSTANCE
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+const db = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   host: `/cloudsql/${process.env.DB_INSTANCE}`,
   dialect: "postgres",
   dialectOptions: {
@@ -31,4 +31,4 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   config
 })
 
-module.exports = sequelize
+module.exports = db
