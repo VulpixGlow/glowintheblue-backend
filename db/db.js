@@ -1,7 +1,5 @@
 const Sequelize = require("sequelize")
 
-// const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
-
 const config = {
   logging: false
 }
@@ -18,8 +16,6 @@ if (process.env.DB_NAME) {
     }
   }
 }
-
-// const { Sequelize } = require('sequelize');
 
 const DB_NAME = process.env.DB_NAME
 const DB_USER = process.env.DB_USER
