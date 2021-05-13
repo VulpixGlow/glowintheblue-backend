@@ -26,7 +26,7 @@ const db = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   host: `/cloudsql/${process.env.DB_INSTANCE}`,
   dialect: "postgres",
   dialectOptions: {
-    socketPath: `/cloudsql/${DB_INSTANCE}`
+    socketPath: `/cloudsql/${DB_INSTANCE}/.s.PGSQL.5432`
   },
   config
 })
