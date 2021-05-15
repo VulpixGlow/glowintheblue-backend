@@ -1,11 +1,12 @@
 {
-  "name": "VulpixCapstoneProjectBackEnd",
+  "name": "glow-backend",
   "version": "1.0.0",
   "description": "Repo for backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "seed": "node seed.js",
+    "start": "node server",
     "create-env": "printenv > .env"
   },
   "repository": {
