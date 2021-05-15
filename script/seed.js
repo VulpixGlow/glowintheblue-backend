@@ -1,14 +1,14 @@
 // Bring in all you user models
 
 // When we require these models it will go the server file look at the index.js file FIRST to find the models
-const { User, Session, Item } = require("./server/db")
+const { User, Session, Item } = require("../server/db")
 
 // Bring in all your test data
-const userData = require("./seed/UserData")
-const sessionData = require("./seed/SessionData")
-const itemData = require("./seed/ItemData")
+const userData = require("../seed/UserData")
+const sessionData = require("../seed/SessionData")
+const itemData = require("../seed/ItemData")
 
-const db = require("./server/db/db")
+const db = require("../server/db/db")
 
 const seed = async () => {
   try {
