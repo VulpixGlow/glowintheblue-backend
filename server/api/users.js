@@ -38,3 +38,14 @@ router.get("/:id", async (req, res, next) => {
     next(error)
   }
 })
+
+router.post("/", async (req, res, next) => {
+  try {
+    console.log("POST ROUTE", req.body.id)
+    const newUser = await User.create({ email: req.body.id })
+    console.log("New User", newUser)
+    res.json(newUser)
+  } catch (error) {
+    next(error)
+  }
+})
