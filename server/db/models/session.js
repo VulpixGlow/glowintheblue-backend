@@ -28,7 +28,9 @@ const Session = db.define("session", {
       "Yoga",
       "Play",
       "Read",
-      "Walk"
+      "Walk",
+      "Focus",
+      "Connect"
     ]),
     defaultValue: "Other"
   },
