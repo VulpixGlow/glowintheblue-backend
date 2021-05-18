@@ -4,6 +4,8 @@ const User = require("../db/models/user")
 
 module.exports = router
 
+// exclude emails from the returned data
+
 router.get("/", async (req, res, next) => {
   try {
     const allSessions = await Session.findAll({
