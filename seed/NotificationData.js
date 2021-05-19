@@ -1,10 +1,12 @@
 const notification = [
   {
-    newChallenge: "your new challenge awaits"
+    newChallenge: "your new challenge awaits",
   },
   {
-   newChallenge: "Who will win this week?"
-  }
-]
+    newChallenge: "Who will win this week?",
+  },
+];
 
-module.exports = notification
+module.exports = notification;
+
+//new comment
