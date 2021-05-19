@@ -16,3 +16,27 @@ router.get("/", async (req, res, next) => {
     next(error)
   }
 })
+
+router.put("/update", async (req, res, next) => {
+  try {
+    console.log("PUT ROUTE", req.params)
+    console.log("Body", req.body)
+    console.log("User Points", req.body.userPoints)
+    const user = await User.findOne({
+      where: {
+        email: req.body.email
+      },
+      include: [Session]
+    })
+
+    console.log("Returned from findUser", user)
+    user.update({
+      totalPoints: req.body.userPoints
+    })
+    // user.totalPoints = req.body.userPoints
+    await user.save({ fields: ["totalPoints"] })
+    await user.reload()
+  } catch (error) {
+    next(error)
+  }
+})
