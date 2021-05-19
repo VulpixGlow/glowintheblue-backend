@@ -42,9 +42,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     console.log("POST ROUTE", req.body.email)
-    const newUser = await User.create({ email: req.body.email })
-    console.log("New User", newUser)
-    res.json(newUser)
+    res.status(201).send(await User.create({ email: req.body.email }))
   } catch (error) {
     next(error)
   }
