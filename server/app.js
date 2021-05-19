@@ -10,7 +10,7 @@ app.use(morgan("dev"))
 // body parsing middleware
 app.use(express.json())
 
-// api routes
+// api/auth routes
 app.use("/api", require("./api"))
 
 // USE THIS ONCE YOU CREATE A LANDING PAGE FOR THE APP

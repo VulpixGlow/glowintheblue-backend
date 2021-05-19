@@ -42,8 +42,38 @@ const session = [
     userId: 1
   },
   {
+    time: 20,
+    categoryName: "Focus",
+    points: 20,
+    userId: 1
+  },
+  {
+    time: 20,
+    categoryName: "Focus",
+    points: 20,
+    userId: 1
+  },
+  {
+    time: 30,
+    categoryName: "Mediate",
+    points: 30,
+    userId: 1
+  },
+  {
+    time: 20,
+    categoryName: "Connect",
+    points: 20,
+    userId: 1
+  },
+  {
     time: 10,
-    categoryName: "Read",
+    categoryName: "Other",
+    points: 10,
+    userId: 1
+  },
+  {
+    time: 20,
+    categoryName: "Other",
     points: 20,
     userId: 1
   }
