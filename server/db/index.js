@@ -10,12 +10,12 @@ const Group = require('./models/group')
 
 User.hasMany(Session)
 User.hasMany(Item)
+User.belongsToMany(Group, { through: UserGroup })
 
 Session.belongsTo(User)
 Item.belongsTo(User)
+Group.belongsToMany(User, { through: UserGroup })
 
-User.belongsTo(Group)
-Group.hasMany(User)
 
 // Session Model will have FK of userID
 // Item Model will have PK of userID
