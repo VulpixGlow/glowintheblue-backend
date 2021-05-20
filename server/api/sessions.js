@@ -11,6 +11,7 @@ router.get("/", async (req, res, next) => {
     const allSessions = await Session.findAll({
       include: [User]
     })
+    console.log('hello from sessionsRoute')
     res.json(allSessions)
   } catch (error) {
     next(error)

@@ -4,15 +4,20 @@ const db = require("./db")
 const Item = require("./models/item")
 const Session = require("./models/session")
 const User = require("./models/user")
+const Group = require('./models/group')
 const Notifications =require("./models/notifications")
+
 
 // an item is an icon/image based on points
 
 User.hasMany(Session)
 User.hasMany(Item)
+User.belongsToMany(Group, { through: UserGroup })
 
 Session.belongsTo(User)
 Item.belongsTo(User)
+Group.belongsToMany(User, { through: UserGroup })
+
 
 Notifications.belongsTo(User)
 // Session Model will have FK of userID
@@ -26,5 +31,6 @@ module.exports = {
   Item,
   Session,
   User,
+  Group
   Notifications
 }
