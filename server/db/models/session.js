@@ -10,7 +10,7 @@ const Session = db.define("session", {
   time: {
     type: Sequelize.INTEGER,
     validate: {
-      min: 600,
+      min: 0,
       max: 7200
     }
   },

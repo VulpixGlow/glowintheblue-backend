@@ -8,7 +8,7 @@ const User = db.define("user", {
       isEmail: true
     }
   },
-  points: {
+  totalPoints: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   }
