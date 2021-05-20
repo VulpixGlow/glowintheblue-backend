@@ -5,7 +5,7 @@ const db = require("../db");
 
 //new update
 const Notifications = db.define("notification", {
-  groupInvite: {
+  whoInvited: {
     type: Sequelize.STRING,
   },
   groupDetails: {

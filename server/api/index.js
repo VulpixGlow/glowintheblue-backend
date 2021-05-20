@@ -5,6 +5,7 @@ router.use("/test", require("./testRoute"))
 router.use("/group", require("./groupRoute"))
 router.use("/sessions", require("./sessions"))
 router.use("/users", require("./users"))
+router.use("/notifications", require("./notifications"))
 
 router.use((req, res, next) => {
   const error = new Error("Not Found")
