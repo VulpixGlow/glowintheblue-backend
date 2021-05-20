@@ -1,9 +1,9 @@
 const notification = [
   {
-    newChallenge: "your new challenge awaits",
+    groupInvite: "you're invited",
   },
   {
-    newChallenge: "Who will win this week?",
+    groupDetails: "This email invited you",
   },
 ];
 
