@@ -1,6 +1,6 @@
 const notification = [
   {
-    whoInvited: "you're invited",
+    groupDetails: "This email invited you",
   },
   {
     groupDetails: "This email invited you",

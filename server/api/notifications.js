@@ -1,18 +1,32 @@
 const router = require("express").Router();
 const User = require("../db/models/user");
+const Group = require('../db/models/group')
+const nodemailer = require('nodemailer');
+const user = require("../../seed/UserData");
+const Notifications = require("../db/models/notifications");
 
 module.exports = router;
 
-router.get("/", (req, res, next) => {
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth:{
+    user: 'glowintheblue@gmail.com',
+    pass: 'letsglow2g8ther'
+  }
+})
+
+router.get("/", async (req, res, next) => {
   try {
-    res.send("Hello");
+    const notifications = await Notifications.findAll()
+    res.json(notifications);
   } catch (error) {
     next(error);
   }
 });
 
 router.post("/", async (req, res, next) => {
-  console.log("HERES THE BODY", req.body.emails);
+  //console.log("HERES THE BODY", req.body);
+  // req.body is an empty object.
   try {
     const users = await Promise.all(
       req.body.emails.map((email) =>
@@ -23,9 +37,35 @@ router.post("/", async (req, res, next) => {
         })
       )
     );
-    res.json([users]);
-    console.log("USERSSS", users);
-    // res.send("IM IN POST ROUTE");
+    //const user = await User.findOne({where: {email: req.body.email}})
+    //find the index of emails that is not in our db
+    const newEmailsIdx = users.map((user, idx)=> {if (user===null) return idx }).filter(idx=>idx!==undefined)
+    //find the list of emails that is not in our db
+    const newEmails = newEmailsIdx.map((idx)=>req.body.emails[idx])
+    console.log('new emails',newEmails)
+    //trigger an email event to the emails above
+    newEmails.map(email=>transporter.sendMail({
+      from: 'glowintheblue@gmail.com',
+      to: email,
+      subject: 'You have been invited to Glow In The Blue',
+      html: '<h1>A cozy place for pacing your day!</h1>'
+    }), function(error, info){
+      if(error){console.log('Mail not sent', error)
+    }else{
+      console.log('Email sent:', + info.response)
+    }
+    })
+    const user = await User.findByPk(req.body.userId)
+    users.filter((user)=> user != null)
+    const group = await Group.create({groupName:req.body.groupName})
+    await group.addUsers([user])
+    //await group.addUsers([users])
+    console.log('new group created after notification',group)
+    //const notification = await Notifications.create({groupDetails:(req.body.emails).join(',')})
+    //await notification.addUsers(user)
+    //console.log('notif line 64', notification)
+    res.json(users);
+    //console.log("USERSSS line 66", users);
   } catch (error) {
     next(error);
   }

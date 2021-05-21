@@ -11,11 +11,11 @@ const Notifications = require("./models/notifications");
 
 User.hasMany(Session);
 User.hasMany(Item);
-// User.belongsToMany(Group, { through: UserGroup })
+User.belongsToMany(Group, { through: 'user_group' })
 
 Session.belongsTo(User);
 Item.belongsTo(User);
-// Group.belongsToMany(User, { through: UserGroup })
+Group.belongsToMany(User, { through: 'user_group' })
 
 User.hasMany(Notifications);
 Notifications.belongsTo(User);
