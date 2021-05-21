@@ -8,15 +8,17 @@ module.exports = app
 app.use(morgan("dev"))
 
 // body parsing middleware
-app.use(express.json())
+// increase body-parsing size limit --> https://reactgo.com/request-entity-too-large-node/
+app.use(express.json({ limit: "25mb" })) //Used to parse JSON bodies
+app.use(express.urlencoded({ limit: "25mb" })) //Parse URL-encoded bodies
 
 // api/auth routes
 app.use("/api", require("./api"))
 
 // USE THIS ONCE YOU CREATE A LANDING PAGE FOR THE APP
-// app.get('/', (req, res) =>
-//   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-// );
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "..", "public/index.html"))
+)
 
 // USE THIS ONCE YOU CREATE A LANDING PAGE FOR THE APP
 // static file-serving middleware
