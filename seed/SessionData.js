@@ -55,7 +55,7 @@ const session = [
   },
   {
     time: 30,
-    categoryName: "Mediate",
+    categoryName: "Meditate",
     points: 30,
     userId: 1
   },

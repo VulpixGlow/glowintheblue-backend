@@ -16,19 +16,12 @@ const Session = db.define("session", {
   },
   categoryName: {
     type: Sequelize.ENUM([
-      "Work",
       "Sport",
-      "Rest",
-      "Social",
-      "Study",
+      "Move",
       "Other",
-      "Entertainment",
-      "Mediate",
-      "Coding",
+      "Meditate",
       "Yoga",
-      "Play",
       "Read",
-      "Walk",
       "Focus",
       "Connect"
     ]),
