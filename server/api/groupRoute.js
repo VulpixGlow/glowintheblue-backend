@@ -6,10 +6,22 @@ module.exports = router
 
 router.get("/", async (req, res, next) => {
   try {
-    const group = await Group.findAll({
+    const groups = await Group.findAll({
       include: [User]
     })
-    console.log('Back group line 12')
+    console.log('Back groupRoute line 12')
+    res.send(groups)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.get("/:groupId", async (req, res, next) => {
+  try {
+    const group = await Group.findByPk(req.params.groupId, {
+      include: [User]
+    })
+    console.log('Back group line 24')
     res.send(group)
   } catch (error) {
     next(error)
