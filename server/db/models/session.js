@@ -12,16 +12,7 @@ const Session = db.define("session", {
     }
   },
   categoryName: {
-    type: Sequelize.ENUM([
-      "Sport",
-      "Move",
-      "Other",
-      "Meditate",
-      "Yoga",
-      "Read",
-      "Focus",
-      "Connect"
-    ]),
+    type: Sequelize.ENUM(["Move", "Other", "Meditate", "Focus", "Connect"]),
     defaultValue: "Other"
   },
   points: {
