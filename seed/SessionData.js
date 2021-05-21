@@ -1,43 +1,43 @@
 const session = [
   {
     time: 10,
-    categoryName: "Yoga",
+    categoryName: "Move",
     points: 10,
     userId: 1
   },
   {
     time: 10,
-    categoryName: "Sport",
+    categoryName: "Move",
     points: 20,
     userId: 2
   },
   {
     time: 20,
-    categoryName: "Read",
+    categoryName: "Connect",
     points: 20,
     userId: 2
   },
   {
     time: 60,
-    categoryName: "Sport",
+    categoryName: "Other",
     points: 20,
     userId: 2
   },
   {
     time: 20,
-    categoryName: "Yoga",
+    categoryName: "Focus",
     points: 20,
     userId: 2
   },
   {
     time: 40,
-    categoryName: "Yoga",
+    categoryName: "Focus",
     points: 20,
     userId: 2
   },
   {
     time: 30,
-    categoryName: "Yoga",
+    categoryName: "Meditate",
     points: 20,
     userId: 1
   },
