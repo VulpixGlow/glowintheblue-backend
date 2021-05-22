@@ -25,12 +25,16 @@ router.put("/update", async (req, res, next) => {
     console.log("User Points", req.body.userPoints);
     // console.log(Object.keys(User.prototype))
 
-    const user = await User.findOrCreate({
+    const [instance, wasCreated] = await User.findOrCreate({
       where: {
         email: req.body.email
       },
       include: [Session]
     });
+
+    console.log("Instance", instance);
+
+    console.log("Was Created", wasCreated);
 
     console.log("User Found or Created", user);
     console.log("Accessing total Points", user.dataValues);
