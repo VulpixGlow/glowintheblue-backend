@@ -34,10 +34,14 @@ router.put("/update", async (req, res, next) => {
 
     console.log("User Found or Created", user);
 
-    console.log("User total points", user.totalPoints);
-    console.log("ARRAY?", user[0]);
+    console.log(
+      "HOW DO I GET THESE VALUES!",
+      user[0].user.dataValues.totalPoints
+    );
+    console.log("ARRAY?", user[0].user);
 
-    let updatedPoints = user.totalPoints + req.body.userPoints;
+    let updatedPoints =
+      user[0].user.dataValues.totalPoints + req.body.userPoints;
 
     console.log("Updated Points", updatedPoints);
 
