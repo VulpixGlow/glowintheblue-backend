@@ -33,7 +33,7 @@ router.put("/update", async (req, res, next) => {
     });
 
     console.log("User Found or Created", user);
-    // user type is object
+    console.log("Accessing total Points", user.dataValues);
 
     // console.log(
     //   "HOW DO I GET THESE VALUES!",
@@ -46,11 +46,9 @@ router.put("/update", async (req, res, next) => {
 
     // console.log("Updated Points", updatedPoints);
 
-    await user
-      .where({ totalPoints })
-      .update({
-        totalPoints: user.dataValues.totalPoints + req.body.userPoints
-      });
+    await user.where({ totalPoints }).update({
+      totalPoints: user.dataValues.totalPoints + req.body.userPoints
+    });
 
     console.log("LINE 41 Attempt to update", user);
     // await user.update({
