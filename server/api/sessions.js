@@ -19,61 +19,30 @@ router.get("/", async (req, res, next) => {
 });
 
 router.put("/update", async (req, res, next) => {
-  try {
-    console.log("PUT ROUTE", req.params);
-    console.log("Body", req.body);
-    console.log("User Points", req.body.userPoints);
-    // console.log(Object.keys(User.prototype))
+  const [user, wasCreated] = await User.findOrCreate({
+    where: {
+      email: req.body.email
+    },
+    include: [Session]
+  });
 
-    const [instance, wasCreated] = await User.findOrCreate({
-      where: {
-        email: req.body.email
-      },
-      include: [Session]
-    });
+  const newSession = await Session.create({
+    categoryName: req.body.categoryName,
+    time: req.body.time,
+    points: req.body.points
+  });
 
-    console.log("Instance", instance);
+  await user.addSession(newSession);
 
-    console.log("Was Created", wasCreated);
-
-    console.log("User Found or Created", user);
-    console.log("Accessing total Points", user.dataValues);
-
-    // console.log(
-    //   "HOW DO I GET THESE VALUES!",
-    //   user[0].user.dataValues.totalPoints
-    // );
-    // console.log("ARRAY?", user[0].user);
-
-    // let updatedPoints =
-    //   user[0].user.dataValues.totalPoints + req.body.userPoints;
-
-    // console.log("Updated Points", updatedPoints);
-
-    await user.where({ totalPoints }).update({
-      totalPoints: user.dataValues.totalPoints + req.body.userPoints
-    });
-
-    console.log("LINE 41 Attempt to update", user);
-    // await user.update({
-    //   totalPoints: user.totalPoints + req.body.userPoints
-    // });
-
-    // await user.save();
-
-    const newSession = await Session.create({
-      categoryName: req.body.categoryName,
-      time: req.body.time,
-      points: req.body.points
-    });
-
-    await user.addSession(newSession);
-
-    // user.totalPoints = req.body.userPoints
-    // await user.save({ fields: ["totalPoints"] })
-    // await user.reload()
-    res.send("Yay!");
-  } catch (error) {
-    next(error);
-  }
+  // https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
+  // https://sequelizedocs.fullstackacademy.com/inserting-updating-destroying/
+  user
+    .update(
+      { totalPoints: user.totalPoints + req.body.userPoints },
+      { returning: true, where: { email: req.body.email } }
+    )
+    .then(function ([rowsUpdate, [updatedUser]]) {
+      res.json(updatedUser);
+    })
+    .catch(next);
 });
