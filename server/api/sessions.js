@@ -42,6 +42,7 @@ router.put("/update", async (req, res, next) => {
       { returning: true, where: { email: req.body.email } }
     )
     .then(function ([rowsUpdate, [updatedUser]]) {
+      console.log("Updated User", updatedUser);
       res.json(updatedUser);
     })
     .catch(next);
