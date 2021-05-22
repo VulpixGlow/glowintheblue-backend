@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.put("/update", async (req, res, next) => {
+router.q"/update", async (req, res, next) => {
   try {
     console.log("PUT ROUTE", req.params);
     console.log("Body", req.body);
@@ -36,6 +36,8 @@ router.put("/update", async (req, res, next) => {
     await user.update({
       totalPoints: user.totalPoints + req.body.userPoints
     });
+
+    await user.save();
 
     const newSession = await Session.create({
       categoryName: req.body.categoryName,
