@@ -48,7 +48,9 @@ router.put("/update", async (req, res, next) => {
 
     await user
       .where({ totalPoints })
-      .update({ totalPoints: usertotalPoints + req.body.userPoints });
+      .update({
+        totalPoints: user.dataValues.totalPoints + req.body.userPoints
+      });
 
     console.log("LINE 41 Attempt to update", user);
     // await user.update({
