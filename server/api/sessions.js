@@ -32,7 +32,7 @@ router.put("/update", async (req, res, next) => {
       include: [Session]
     });
 
-    console.log("User Found or Created", user);
+    console.log("User Found or Created", typeof user);
 
     console.log(
       "HOW DO I GET THESE VALUES!",
