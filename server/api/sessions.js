@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.q"/update", async (req, res, next) => {
+router.put("/update", async (req, res, next) => {
   try {
     console.log("PUT ROUTE", req.params);
     console.log("Body", req.body);
@@ -34,11 +34,11 @@ router.q"/update", async (req, res, next) => {
       include: [Session]
     });
 
-   let updatedPoints = user.totalPoints + req.body.userPoints
+    let updatedPoints = user.totalPoints + req.body.userPoints;
 
-    await user.where({totalPoints}).update({updatedPoints})
+    await users.where({ totalPoints }).update({ updatedPoints });
 
-    console.log("LINE 41 Attempt to update userpoints", user);
+    console.log("LINE 41 Attempt to update", user);
     // await user.update({
     //   totalPoints: user.totalPoints + req.body.userPoints
     // });
