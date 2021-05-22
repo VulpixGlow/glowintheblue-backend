@@ -21,7 +21,7 @@ router.get("/", async (req, res, next) => {
 router.put("/update", async (req, res, next) => {
   console.log("Inside Updated Route");
 
-  const [user, wasCreated] = await User.findOrCreate({
+  let [user, wasCreated] = await User.findOrCreate({
     where: {
       email: req.body.email
     },
