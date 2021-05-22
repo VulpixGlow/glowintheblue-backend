@@ -32,20 +32,23 @@ router.put("/update", async (req, res, next) => {
       include: [Session]
     });
 
-    console.log("User Found or Created", typeof user);
+    console.log("User Found or Created", user);
+    // user type is object
 
-    console.log(
-      "HOW DO I GET THESE VALUES!",
-      user[0].user.dataValues.totalPoints
-    );
-    console.log("ARRAY?", user[0].user);
+    // console.log(
+    //   "HOW DO I GET THESE VALUES!",
+    //   user[0].user.dataValues.totalPoints
+    // );
+    // console.log("ARRAY?", user[0].user);
 
-    let updatedPoints =
-      user[0].user.dataValues.totalPoints + req.body.userPoints;
+    // let updatedPoints =
+    //   user[0].user.dataValues.totalPoints + req.body.userPoints;
 
-    console.log("Updated Points", updatedPoints);
+    // console.log("Updated Points", updatedPoints);
 
-    await user.where({ totalPoints }).update({ updatedPoints });
+    await user
+      .where({ totalPoints })
+      .update({ totalPoints: usertotalPoints + req.body.userPoints });
 
     console.log("LINE 41 Attempt to update", user);
     // await user.update({
