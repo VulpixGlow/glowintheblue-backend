@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
     const allSessions = await Session.findAll({
       include: [User]
     });
-    console.log("hello from sessionsRoute");
+    console.log("hello from sessions Route");
     res.json(allSessions);
   } catch (error) {
     next(error);
@@ -19,6 +19,8 @@ router.get("/", async (req, res, next) => {
 });
 
 router.put("/update", async (req, res, next) => {
+  console.log("Inside Updated Route");
+
   const [user, wasCreated] = await User.findOrCreate({
     where: {
       email: req.body.email
@@ -36,14 +38,18 @@ router.put("/update", async (req, res, next) => {
 
   // https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
   // https://sequelizedocs.fullstackacademy.com/inserting-updating-destroying/
-  user
-    .update(
-      { totalPoints: user.totalPoints + req.body.userPoints },
-      { returning: true, where: { email: req.body.email } }
-    )
-    .then(function ([rowsUpdate, [updatedUser]]) {
-      console.log("Updated User", updatedUser);
-      res.json(updatedUser);
-    })
-    .catch(next);
+
+  // user.update(
+  //   { totalPoints: user.totalPoints + req.body.userPoints },
+  //   { returning: true, where: { email: req.body.email } }
+  // );
+  // await function ([rowsUpdate, [updatedUser]]) {
+  //   console.log("Updated User", updatedUser);
+  //   res.json(updatedUser);
+  // }.catch(next);
+
+  user = await user.update({
+    totalPoints: user.totalPoints + req.body.userPoints
+  });
+  res.json(user);
 });
