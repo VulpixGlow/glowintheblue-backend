@@ -25,8 +25,6 @@ router.put("/update", async (req, res, next) => {
     console.log("User Points", req.body.userPoints);
     // console.log(Object.keys(User.prototype))
 
-    db.users.where({ email }).update({ password });
-
     const user = await User.findOrCreate({
       where: {
         email: req.body.email
@@ -34,9 +32,13 @@ router.put("/update", async (req, res, next) => {
       include: [Session]
     });
 
+    console.log("User Found or Created", user);
+
     let updatedPoints = user.totalPoints + req.body.userPoints;
 
-    await users.where({ totalPoints }).update({ updatedPoints });
+    console.log("Updated Points", updatedPoints);
+
+    await user.where({ totalPoints }).update({ updatedPoints });
 
     console.log("LINE 41 Attempt to update", user);
     // await user.update({
