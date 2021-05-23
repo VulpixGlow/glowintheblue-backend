@@ -36,20 +36,12 @@ router.put("/update", async (req, res, next) => {
 
   await user.addSession(newSession);
 
-  // https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
-  // https://sequelizedocs.fullstackacademy.com/inserting-updating-destroying/
-
-  // user.update(
-  //   { totalPoints: user.totalPoints + req.body.userPoints },
-  //   { returning: true, where: { email: req.body.email } }
-  // );
-  // await function ([rowsUpdate, [updatedUser]]) {
-  //   console.log("Updated User", updatedUser);
-  //   res.json(updatedUser);
-  // }.catch(next);
-
+  // user = await user.update({
+  //   totalPoints: user.totalPoints + req.body.userPoints
+  // });
+  // res.json(user);
   user = await user.update({
-    totalPoints: user.totalPoints + req.body.userPoints
+    totalPoints: req.body.userPoints
   });
   res.json(user);
 });
