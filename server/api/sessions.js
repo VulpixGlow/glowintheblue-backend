@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
     const allSessions = await Session.findAll({
       include: [User]
     });
-    console.log("hello from sessions Route");
+    //console.log("hello from sessions Route");
     res.json(allSessions);
   } catch (error) {
     next(error);
@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.put("/update", async (req, res, next) => {
-  console.log("Inside Updated Route");
+  //console.log("Inside Updated Route");
 
   let [user, wasCreated] = await User.findOrCreate({
     where: {

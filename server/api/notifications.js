@@ -42,7 +42,7 @@ router.post("/", async (req, res, next) => {
     const newEmailsIdx = users.map((user, idx)=> {if (user===null) return idx }).filter(idx=>idx!==undefined)
     //find the list of emails that is not in our db
     const newEmails = newEmailsIdx.map((idx)=>req.body.emails[idx])
-    console.log('new emails',newEmails)
+    //console.log('new emails',newEmails)
     //trigger an email event to the emails above
     newEmails.map(email=>transporter.sendMail({
       from: 'glowintheblue@gmail.com',
@@ -55,16 +55,27 @@ router.post("/", async (req, res, next) => {
       console.log('Email sent:', + info.response)
     }
     })
-    const user = await User.findByPk(req.body.userId)
-    users.filter((user)=> user != null)
+    const user = await User.findOne({
+      where: {email: req.body.ownerEmail}
+    })
+   //console.log('all users in notif route', users)
+    const filtered=(users)=>{
+      return users.filter((user)=>user!==null)
+    }
+    const newGroupUsers = filtered(users)
+    //console.log('newUsers in notification route',newGroupUsers)
     const group = await Group.create({groupName:req.body.groupName})
     await group.addUsers([user])
-    //await group.addUsers([users])
-    console.log('new group created after notification',group)
-    //const notification = await Notifications.create({groupDetails:(req.body.emails).join(',')})
-    //await notification.addUsers(user)
-    //console.log('notif line 64', notification)
-    res.json(users);
+    await group.addUsers(newGroupUsers)
+    //console.log('new group created after notification',group)
+    const notification = await Notifications.create({
+      groupDetails:(req.body.emails).join(','),
+      userId: user.id
+    })
+    //console.log('notif line 75', group)
+    //console.log('notif line 76', notification)
+    res.json(newGroupUsers);
+    //res.json(group);
     //console.log("USERSSS line 66", users);
   } catch (error) {
     next(error);
