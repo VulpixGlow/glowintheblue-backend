@@ -78,7 +78,10 @@ router.post("/", async (req, res, next) => {
     await group.addUsers(newGroupUsers);
     //console.log('new group created after notification',group)
     const notification = await Notifications.create({
-      groupDetails: req.body.emails.join(","),
+
+      groupDetails:(req.body.emails).join(','),
+      email: user.email,
+
       userId: user.id
     });
     //console.log('notif line 75', group)
