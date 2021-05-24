@@ -8,7 +8,7 @@ router.get("/", async (req, res, next) => {
   try {
     console.log("req.body", req.body);
     console.log("req.param", req.params);
-    const user = await user.findAll({
+    const user = await User.findAll({
       include: [Group]
     });
     //const groups = await Group.findByFk(user.id)
