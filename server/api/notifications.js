@@ -10,7 +10,7 @@ module.exports = router;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "glowintheblue@gmail.com",
+    user: proces.env.NODEMAILER_EMAIL,
     pass: process.env.NODEMAILER_PASS
   }
 });
@@ -78,8 +78,7 @@ router.post("/", async (req, res, next) => {
     await group.addUsers(newGroupUsers);
     //console.log('new group created after notification',group)
     const notification = await Notifications.create({
-
-      groupDetails:(req.body.emails).join(','),
+      groupDetails: req.body.emails.join(","),
       //ownerEmail: user.email,
       userId: user.id
     });
