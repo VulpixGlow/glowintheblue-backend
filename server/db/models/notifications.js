@@ -8,7 +8,7 @@ const Notifications = db.define("notification", {
   groupDetails: {
     type: Sequelize.STRING,
   },
-  email: {
+  ownerEmail: {
     type: Sequelize.STRING,
   }
 });

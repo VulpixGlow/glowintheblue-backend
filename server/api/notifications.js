@@ -80,8 +80,7 @@ router.post("/", async (req, res, next) => {
     const notification = await Notifications.create({
 
       groupDetails:(req.body.emails).join(','),
-      email: user.email,
-
+      ownerEmail: user.email,
       userId: user.id
     });
     //console.log('notif line 75', group)
