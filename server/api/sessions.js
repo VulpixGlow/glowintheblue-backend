@@ -1,8 +1,8 @@
-const router = require("express").Router()
-const Session = require("../db/models/session")
-const User = require("../db/models/user")
+const router = require("express").Router();
+const Session = require("../db/models/session");
+const User = require("../db/models/user");
 
-module.exports = router
+module.exports = router;
 
 // exclude emails from the returned data
 
@@ -10,34 +10,38 @@ router.get("/", async (req, res, next) => {
   try {
     const allSessions = await Session.findAll({
       include: [User]
-    })
-    console.log('hello from sessionsRoute')
-    res.json(allSessions)
+    });
+    //console.log("hello from sessions Route");
+    res.json(allSessions);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 router.put("/update", async (req, res, next) => {
-  try {
-    console.log("PUT ROUTE", req.params)
-    console.log("Body", req.body)
-    console.log("User Points", req.body.userPoints)
-    const user = await User.findOne({
-      where: {
-        email: req.body.email
-      },
-      include: [Session]
-    })
+  //console.log("Inside Updated Route");
 
-    console.log("Returned from findUser", user)
-    user.update({
-      totalPoints: req.body.userPoints
-    })
-    // user.totalPoints = req.body.userPoints
-    await user.save({ fields: ["totalPoints"] })
-    await user.reload()
-  } catch (error) {
-    next(error)
-  }
-})
+  let [user, wasCreated] = await User.findOrCreate({
+    where: {
+      email: req.body.email
+    },
+    include: [Session]
+  });
+
+  const newSession = await Session.create({
+    categoryName: req.body.categoryName,
+    time: req.body.time,
+    points: req.body.points
+  });
+
+  await user.addSession(newSession);
+
+  // user = await user.update({
+  //   totalPoints: user.totalPoints + req.body.userPoints
+  // });
+  // res.json(user);
+  user = await user.update({
+    totalPoints: req.body.userPoints
+  });
+  res.json(user);
+});

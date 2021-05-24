@@ -6,7 +6,8 @@ const user = [
   {
     email: "trevel2y@theatlantic.com",
     totalPoints: 10
-  }
+  },
+  { email: "ebThur@g.com", totalPoints: 0 }
 ]
 
 module.exports = user
