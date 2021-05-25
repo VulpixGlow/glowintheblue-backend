@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
 router.get("/", async (req, res, next) => {
   try {
     const notifications = await Notifications.findAll({
-      include: [User, Group]
+      include: {model: User, include:[Group]}
     });
     res.json(notifications);
   } catch (error) {
