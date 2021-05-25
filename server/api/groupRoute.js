@@ -19,6 +19,20 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.put("/", async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {email: req.body.email}
+    })
+    const group = await Group.findByPk(req.body.groupId)
+    await group.addUser([user])
+    res.json(group)
+  } catch (e) {
+    next(e)
+  }
+})
+
+
 // router.get("/:groupId", async (req, res, next) => {
 //   try {
 //     const group = await Group.findByPk(req.params.groupId, {
