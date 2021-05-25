@@ -26,6 +26,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+
 router.post("/", async (req, res, next) => {
   //console.log("HERES THE BODY", req.body);
   // req.body is an empty object.
@@ -86,7 +87,7 @@ router.post("/", async (req, res, next) => {
     });
     //console.log('notif line 75', group)
     //console.log('notif line 76', notification)
-    res.json(newGroupUsers);
+    res.json(group);
     //res.json(group);
     //console.log("USERSSS line 66", users);
   } catch (error) {
