@@ -1,2 +1,4 @@
-# VulpixCapstoneProjectBackEnd
-Repo for backend
+# Glow In The Blue
+
+Backend Repo for Glow In The Blue
+
