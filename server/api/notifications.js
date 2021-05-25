@@ -10,14 +10,16 @@ module.exports = router;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "glowintheblue@gmail.com",
+    user: process.env.NODEMAILER_EMAIL,
     pass: process.env.NODEMAILER_PASS
   }
 });
 
 router.get("/", async (req, res, next) => {
   try {
-    const notifications = await Notifications.findAll();
+    const notifications = await Notifications.findAll({
+      include: [User]
+    });
     res.json(notifications);
   } catch (error) {
     next(error);
