@@ -6,13 +6,13 @@ module.exports = router;
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log("req.body", req.body);
-    console.log("req.param", req.params);
+    //console.log("req.body", req.body);
+    //console.log("req.param", req.params);
     const user = await User.findAll({
       include: [Group]
     });
     //const groups = await Group.findByFk(user.id)
-    console.log("Back groupRoute line 16", user);
+    //console.log("Back groupRoute line 16", user);
     res.json(user);
   } catch (error) {
     next(error);
