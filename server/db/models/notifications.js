@@ -8,9 +8,9 @@ const Notifications = db.define("notification", {
   groupDetails: {
     type: Sequelize.STRING,
   },
-  ownerEmail: {
-    type: Sequelize.STRING,
-  }
+  // ownerEmail: {
+  //   type: Sequelize.STRING,
+  // }
 });
 
 module.exports = Notifications;
