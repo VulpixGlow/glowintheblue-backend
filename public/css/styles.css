@@ -58,14 +58,12 @@
 
 body {
   margin: 0;
-  font-family: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Karla';
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
-  color: #8cffdf;
-  background-color: #fff;
+  color: #64a5e9;
+  background-color: #ffe8fe;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -96,10 +94,8 @@ h1,
 .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: 'Newsreader', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  font-weight: 600;
+  font-family: 'Karla';
+  font-weight: 700 !important;
   line-height: 1.2;
 }
 
@@ -3051,14 +3047,14 @@ fieldset:disabled .btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #2937f0;
-  border-color: #2937f0;
+  color: #294c42;
+  background-color: #8cffdf;
+  border-color: #8cffdf;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #232fcc;
-  border-color: #212cc0;
+  background-color: #8cffdf;
+  border-color: #8cffdf;
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
@@ -4142,7 +4138,7 @@ fieldset:disabled .btn {
   color: #212cc0;
 }
 .nav-link.disabled {
-  color: #6c757d;
+  color: #fec7fb;
   pointer-events: none;
   cursor: default;
 }
@@ -4159,19 +4155,19 @@ fieldset:disabled .btn {
 }
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  border-color: #fec7fb #fec7fb #fec7fb;
   isolation: isolate;
 }
 .nav-tabs .nav-link.disabled {
-  color: #6c757d;
+  color: #fec7fb;
   background-color: transparent;
   border-color: transparent;
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
+  color: #fec7fb;
   background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  border-color: #fec7fb #fec7fb #fff;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4464,35 +4460,35 @@ fieldset:disabled .btn {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: #2d2660;
 }
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.55);
+  color: #fec7fb;
 }
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
+  color: #fec7fb;
 }
 .navbar-light .navbar-nav .nav-link.disabled {
-  color: rgba(0, 0, 0, 0.3);
+  color: #fec7fb;
 }
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .nav-link.active {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-toggler {
-  color: rgba(0, 0, 0, 0.55);
+  color: #fec7fb;
   border-color: rgba(0, 0, 0, 0.1);
 }
 .navbar-light .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .navbar-light .navbar-text {
-  color: rgba(0, 0, 0, 0.55);
+  color: #fec7fb;
 }
 .navbar-light .navbar-text a,
 .navbar-light .navbar-text a:hover,
@@ -5820,9 +5816,7 @@ fieldset:disabled .btn {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Karla';
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
@@ -5936,9 +5930,7 @@ fieldset:disabled .btn {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Karla';
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
@@ -7323,7 +7315,7 @@ fieldset:disabled .btn {
 }
 
 .mb-0 {
-  margin-bottom: 0 !important;
+  margin-bottom: 5 !important;
 }
 
 .mb-1 {
@@ -7724,13 +7716,20 @@ fieldset:disabled .btn {
 .text-muted {
   color: #6c757d !important;
 }
+.text-pink {
+  color: #fec7fb !important;
+}
 
 .text-black-50 {
   color: rgba(0, 0, 0, 0.5) !important;
 }
 
+.text-blue {
+  color: #2d2660 !important;
+}
+
 .text-white-50 {
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(168, 164, 164, 0.5) !important;
 }
 
 .text-reset {
@@ -11191,17 +11190,15 @@ html {
 }
 
 .bg-gradient-primary-to-secondary {
-  background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;
+  background: linear-gradient(45deg, #8cffdf, #8cffdf) !important;
 }
 
 .font-alt {
-  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji' !important;
+  font-family: 'Karla' !important;
 }
 
 .text-gradient {
-  background: -webkit-linear-gradient(#2937f0, #9f1ae2);
+  background: -webkit-linear-gradient(#8cffdf, #fec7fb);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -11220,16 +11217,14 @@ section {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #fff;
+  background-color: #64a5e9;
 }
 #mainNav .navbar-brand {
-  font-family: 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Karla';
 }
 #mainNav .navbar-brand:hover,
 #mainNav .navbar-brand:active {
-  color: #2937f0;
+  color: #fec7fb;
 }
 #mainNav .navbar-toggler {
   font-size: 0.875rem;
@@ -11237,13 +11232,13 @@ section {
   color: #;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-  color: #212529;
+  color: #2d2660;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #6c757d;
+  color: #fec7fb;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active {
-  color: #2937f0;
+  color: #fec7fb;
 }
 
 /*!
@@ -11346,10 +11341,10 @@ section.cta:before {
   display: none;
 }
 .features-device-mockup .circle .gradient-start-color {
-  stop-color: #2937f0;
+  stop-color: #8cffdf;
 }
 .features-device-mockup .circle .gradient-end-color {
-  stop-color: #9f1ae2;
+  stop-color: #fec7fb;
 }
 .features-device-mockup .shape-1 {
   position: absolute;
@@ -11443,7 +11438,7 @@ footer a:focus {
 }
 
 .masthead {
-  background-color: #64a5e9;
+  background-color: #2d2660;
   padding-top: 9.5rem;
   padding-bottom: 5rem;
 }
@@ -11456,21 +11451,21 @@ footer a:focus {
 .masthead .masthead-device-mockup .circle {
   position: absolute;
   fill: url(#circleGradient);
-  width: 70%;
+  width: 100%;
   display: none;
 }
 .masthead .masthead-device-mockup .circle .gradient-start-color {
-  stop-color: #2937f0;
+  stop-color: #8cffdf;
 }
 .masthead .masthead-device-mockup .circle .gradient-end-color {
-  stop-color: #9f1ae2;
+  stop-color: #64a5e9;
 }
 .masthead .masthead-device-mockup .shape-1 {
   position: absolute;
   height: 1rem;
   width: 1rem;
   transform: rotate(-10deg);
-  fill: #2937f0;
+  fill: #fec7fb;
   bottom: 15%;
   left: 10%;
 }
@@ -11478,7 +11473,7 @@ footer a:focus {
   position: absolute;
   height: 0.75rem;
   width: 0.75rem;
-  fill: #2937f0;
+  fill: #fec7fb;
   top: 15%;
   right: 10%;
 }
@@ -11525,4 +11520,20 @@ footer a:focus {
   .masthead .masthead-device-mockup .device-wrapper {
     max-width: 17rem;
   }
+}
+
+.linkedin-logo {
+  width: 30px;
+  margin: 30;
+}
+
+.team-photo {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  background: -webkit-linear-gradient(left top, #ff80e4 0%, #49ffed 100%);
+  border-radius: 1000px;
+  padding: 8px;
 }
