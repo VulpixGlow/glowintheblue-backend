@@ -10,19 +10,22 @@ module.exports = router;
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "glowintheblue@gmail.com",
+    user: process.env.NODEMAILER_EMAIL,
     pass: process.env.NODEMAILER_PASS
   }
 });
 
 router.get("/", async (req, res, next) => {
   try {
-    const notifications = await Notifications.findAll();
+    const notifications = await Notifications.findAll({
+      include: {model: User, include:[Group]}
+    });
     res.json(notifications);
   } catch (error) {
     next(error);
   }
 });
+
 
 router.post("/", async (req, res, next) => {
   //console.log("HERES THE BODY", req.body);
@@ -78,14 +81,13 @@ router.post("/", async (req, res, next) => {
     await group.addUsers(newGroupUsers);
     //console.log('new group created after notification',group)
     const notification = await Notifications.create({
-
-      groupDetails:(req.body.emails).join(','),
-      ownerEmail: user.email,
+      groupDetails: req.body.emails.join(","),
+      //ownerEmail: user.email,
       userId: user.id
     });
     //console.log('notif line 75', group)
     //console.log('notif line 76', notification)
-    res.json(newGroupUsers);
+    res.json(group);
     //res.json(group);
     //console.log("USERSSS line 66", users);
   } catch (error) {

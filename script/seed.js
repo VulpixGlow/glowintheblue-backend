@@ -19,7 +19,15 @@ const seed = async () => {
     await User.bulkCreate(userData)
     await Session.bulkCreate(sessionData)
     await Item.bulkCreate(itemData)
-    await Notifications.bulkCreate(notificationData)
+    //await Notifications.bulkCreate(notificationData)
+    const notification1 = await Notifications.create({
+      groupDetails: "user1@gmail.com, user3@gmail.com, user6@gmail.com",
+      //ownerEmail: 'user5@gmail.com',
+    })
+    const notification2 = await Notifications.create({
+      groupDetails: "user2@gmail.com, user6@gmail.com",
+      //ownerEmail: 'user5@gmail.com',
+    })
     const group1 = await Group.create({
       groupName: 'Vulpix'
     })
@@ -52,6 +60,8 @@ const seed = async () => {
     })
     await group1.addUser([user1, user2, user3])
     await group2.addUser([user4, user5, user6])
+    await user2.addNotifications([notification1])
+    await user4.addNotifications([notification2])
   } catch (error) {
     console.log("error", error)
     db.close()
