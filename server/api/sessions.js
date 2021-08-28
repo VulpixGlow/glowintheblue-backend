@@ -4,14 +4,12 @@ const User = require("../db/models/user");
 
 module.exports = router;
 
-// exclude emails from the returned data
-
 router.get("/", async (req, res, next) => {
   try {
     const allSessions = await Session.findAll({
       include: [User]
     });
-    //console.log("hello from sessions Route");
+
     res.json(allSessions);
   } catch (error) {
     next(error);
@@ -19,8 +17,6 @@ router.get("/", async (req, res, next) => {
 });
 
 router.put("/update", async (req, res, next) => {
-  //console.log("Inside Updated Route");
-
   let [user, wasCreated] = await User.findOrCreate({
     where: {
       email: req.body.email
@@ -36,10 +32,6 @@ router.put("/update", async (req, res, next) => {
 
   await user.addSession(newSession);
 
-  // user = await user.update({
-  //   totalPoints: user.totalPoints + req.body.userPoints
-  // });
-  // res.json(user);
   user = await user.update({
     totalPoints: req.body.userPoints
   });
