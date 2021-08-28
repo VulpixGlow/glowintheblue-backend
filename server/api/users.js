@@ -1,8 +1,8 @@
-const router = require("express").Router()
-const Session = require("../db/models/session")
-const User = require("../db/models/user")
+const router = require("express").Router();
+const Session = require("../db/models/session");
+const User = require("../db/models/user");
 
-module.exports = router
+module.exports = router;
 
 router.get("/", async (req, res, next) => {
   try {
@@ -11,12 +11,12 @@ router.get("/", async (req, res, next) => {
       attributes: {
         exclude: ["email"]
       }
-    })
-    res.json(users)
+    });
+    res.json(users);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 router.get("/:id", async (req, res, next) => {
   try {
@@ -25,25 +25,24 @@ router.get("/:id", async (req, res, next) => {
       attributes: {
         exclude: ["email"]
       }
-    })
+    });
 
     if (!singleUser) {
-      const err = Error("User not found")
-      err.status = 404
-      throw err
+      const err = Error("User not found");
+      err.status = 404;
+      throw err;
     }
 
-    res.json(singleUser)
+    res.json(singleUser);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 router.post("/", async (req, res, next) => {
   try {
-    //console.log("POST ROUTE", req.body.email)
-    res.status(201).send(await User.create({ email: req.body.email }))
+    res.status(201).send(await User.create({ email: req.body.email }));
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
